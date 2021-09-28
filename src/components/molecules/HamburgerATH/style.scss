@@ -1,0 +1,29 @@
+/*
+* File: style.scss
+* Project: cellcard-play-pwa
+* Author: Dilum Sanjaya (dranasinghe@mitrai.com)
+* File Created: Wednesday, 09th December 2020 11:11 am
+* Module: Cellcard Play Frontend
+* Copyright 2020 - 2020 Mitra Innovation Ltd., Mitra Innovation Ltd.
+*/
+
+.hamburger-add-to-home{
+    &-container{
+        height: 32px;
+        &-icon{
+            font-size: 30px;
+            height: 30px;
+            width: 30px;
+            
+        }
+    }
+}
+
+
+
+
+@media all and (display-mode: standalone) {
+    .hamburger-btn-add-to-home{
+        display: none !important;
+    }
+}

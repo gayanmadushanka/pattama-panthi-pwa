@@ -3,15 +3,15 @@ import ReactDOM from "react-dom";
 import { createStore, applyMiddleware } from "redux";
 import { createEpicMiddleware } from "redux-observable";
 import { Provider } from "react-redux";
-
 import { composeWithDevTools } from "redux-devtools-extension";
-
-import rootReducer from "./reducers";
-import { rootEpic } from "./epics";
-import App from "./App";
 
 import * as serviceWorkerRegistration from "./serviceWorkerRegistration";
 import reportWebVitals from "./reportWebVitals";
+import rootReducer from "./reducers";
+import { rootEpic } from "./epics";
+import App from "./App";
+import './index.scss';
+import './i18n';
 
 const epicMiddleware = createEpicMiddleware();
 

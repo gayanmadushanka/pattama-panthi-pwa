@@ -1,19 +1,19 @@
 import React from "react";
-import { BrowserRouter } from "react-router-dom";
-import CssBaseline from "@material-ui/core/CssBaseline";
-import { ThemeProvider } from "@material-ui/core/styles";
+import { Route, BrowserRouter, Switch } from "react-router-dom";
 
-import theme from "./theme";
-import Routes from "./Routes";
+import ROUTES from "./constants/Routes";
+import HomeView from "./views/Home";
 
-const App = () => (
-  <ThemeProvider theme={theme}>
-    <CssBaseline />
-    <BrowserRouter>
-      <Routes />
-    </BrowserRouter>
-  </ThemeProvider>
-);
+const App = () => {
+  return (
+    <>
+      <BrowserRouter>
+        <Switch>
+          <Route path={ROUTES.ROUTE_HOME} exact component={HomeView} />
+        </Switch>
+      </BrowserRouter>
+    </>
+  );
+};
 
 export default App;
-
