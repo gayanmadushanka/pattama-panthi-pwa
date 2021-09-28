@@ -1,10 +1,12 @@
 import React from "react";
 
-import DefaultTemplate from "../../templates/DefaultTemplate";
 import "./style.scss";
+import Header from "../../components/organisms/Header";
 
 const More = (props) => {
-  return <DefaultTemplate></DefaultTemplate>;
+  return <>
+    <Header active="true" />
+  </>
 };
 
 export default More;

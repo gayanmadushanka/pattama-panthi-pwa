@@ -1,10 +1,13 @@
 import React from "react";
 
 import "./style.scss";
-import DefaultTemplate from "../../templates/DefaultTemplate";
+import Header from "../../components/organisms/Header";
 
 const PostAds = (props) => {
-  return <DefaultTemplate></DefaultTemplate>;
+  return <>
+    <Header active="true" />
+  </>
 };
+
 
 export default PostAds;
