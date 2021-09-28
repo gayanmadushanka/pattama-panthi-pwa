@@ -10,7 +10,7 @@ const DefaultTemplate = (props) => {
   return (
     <React.Fragment>
       <div className="page page--default d-lg-none d-xl-none ">
-        <Header />
+        {/* <Header /> */}
         <Nav active="true" />
         {/* <div className="page__content">{props.children}</div>
         <Footer /> */}

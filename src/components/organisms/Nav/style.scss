@@ -8,11 +8,9 @@
 */
 
 .bottom-navigation{
-    height: 65px;
-    position: fixed;
     left: 0;
     right: 0;
-    bottom: 0;
+    top: 0;
     z-index: 1;
 
     &-text{
@@ -28,6 +26,6 @@
        padding-top: 7px; 
     }
     &-padded{
-        height: 80px;
+        height: 0px;
     }
 }
