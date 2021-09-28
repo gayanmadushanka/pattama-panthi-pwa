@@ -1,56 +1,52 @@
-import React, { useState } from "react";
+import React from "react";
+import Icon from "../../../components/atoms/Icon";
+import clsx from "clsx";
+import { useHistory } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import ActionItem from "../../atoms/ActionItem";
-import BrandLogo from "../../atoms/BrandLogo";
-import SideMenu from "../../molecules/SideMenu";
-import "./index.scss";
+import data from "./data";
+import "./style.scss";
 
-const Header = () => {
+const Item = ({ active, title, route, iconActive, icon }) => {
+  const history = useHistory();
   const { t } = useTranslation();
-  // const [adhState, setAdhState] = useState(false);
-  const [menuState, setMenuState] = useState(false);
-
-  // const toggleAddtoHome = () => {
-  //   setAdhState(!adhState);
-  // };
-
-  const toggleMenu = () => {
-    const state = !menuState;
-    if (state) {
-      document.body.classList.add("menu-open");
-    } else {
-      document.body.classList.remove("menu-open");
-    }
-    setMenuState(state);
+  const onClick = () => {
+    history.push(route);
   };
 
   return (
-    <>
-      <div
-        className="test px-3 d-flex align-items-center"
-        style={{ height: "60px" }}
-      >
-        <div
-          className="icon-menu mr-2"
-          style={{ fontSize: "36px" }}
-          onClick={toggleMenu}
-        />
-        {/* <BrandLogo alt={t("Cellcard Play")} />
-        <div className="flex-grow-1" />
-        <ActionItem
-          variant="sub1"
-          weight="semi-bold"
-          rounded
-          flex
-          className="btn-register-free"
-          value={t("GP720_004")}
-          to={{
-            pathname: "/",
-            hash: "login",
-          }}
-        /> */}
+    <div
+      className={clsx(
+        "bottom-navigation-item d-flex flex-column align-items-center focus-nulled",
+        active ? "text-cellcard" : "text-gray"
+      )}
+      onKeyDown={() => {}}
+      onClick={onClick}
+      role="button"
+      tabIndex={0}
+    >
+      <div className="bottom-navigation-icon-container d-flex justify-content-center align-items-center">
+        <Icon icon={active ? iconActive : icon} />
       </div>
-      {/* <SideMenu onClose={toggleMenu} show={menuState} /> */}
+      <div className="bottom-navigation-text text-uppercase">{t(title)}</div>
+    </div>
+  );
+};
+const Header = ({ active }) => {
+  return (
+    <>
+      <div className="bottom-navigation bg-gray-5 d-flex text-uppercase justify-content-around">
+        {data.map(({ id, title, route, iconActive, icon }) => (
+          <Item
+            active={active === id}
+            key={id}
+            id={id}
+            title={title}
+            route={route}
+            iconActive={iconActive}
+            icon={icon}
+          />
+        ))}
+      </div>
     </>
   );
 };
