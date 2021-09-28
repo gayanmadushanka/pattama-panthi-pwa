@@ -1,15 +1,34 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorkerRegistration from './serviceWorkerRegistration';
-import reportWebVitals from './reportWebVitals';
+import React from "react";
+import ReactDOM from "react-dom";
+import { createStore, applyMiddleware } from "redux";
+import { createEpicMiddleware } from "redux-observable";
+import { Provider } from "react-redux";
+
+import { composeWithDevTools } from "redux-devtools-extension";
+
+import rootReducer from "./reducers";
+import { rootEpic } from "./epics";
+import App from "./App";
+
+import * as serviceWorkerRegistration from "./serviceWorkerRegistration";
+import reportWebVitals from "./reportWebVitals";
+
+const epicMiddleware = createEpicMiddleware();
+
+const store = createStore(
+  rootReducer,
+  composeWithDevTools(applyMiddleware(epicMiddleware))
+);
+
+epicMiddleware.run(rootEpic);
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Provider store={store}>
+      <App />
+    </Provider>
   </React.StrictMode>,
-  document.getElementById('root')
+  document.getElementById("root")
 );
 
 // If you want your app to work offline and load faster, you can change
